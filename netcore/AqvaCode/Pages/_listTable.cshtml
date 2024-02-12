@@ -1,0 +1,29 @@
+
+@model List<AqvaCode.Models.Data>
+@{
+
+}
+@if (Model.Any())
+{
+    <table class="table" id="listTable">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Url</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(mItem => item.Id)</td>
+                <th scope="row">@Html.DisplayFor(mItem => item.Title)</th>
+                <td>@Html.DisplayFor(mItem => item.Url)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+} else {
+    <h1>No results found!</h1>
+}

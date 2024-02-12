@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome Dashboard</h1>
+
+    <div class="d-flex w-100 justify-content-center">
+        <form method="get" class="w-50">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="type title or url" aria-label="title-search"
+                    aria-describedby="basic-addon2" id="searchInput">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="searchBtn">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="partialTable">
+        <partial name="_listTable" model="Model.data" />
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $('#searchBtn').on('click', function () {
+                console.log('click test' +  $('#searchInput').val());
+                $('#partialTable').load('/?handler=ListTable&searchText=' + $('#searchInput').val());
+            });
+        });
+    </script>
+}
